@@ -92,9 +92,9 @@ def main(args):
     if total < 1:
         return
     
-    print(f'# denoising {total} tomograms with patch size={args.patch_size} and padding={args.padding}', file=sys.stderr)
+    print(f'# denoising {total} tomograms with patch size={args.patch_size} and padding={args.patch_padding}', file=sys.stderr)
     # denoise the volumes
-    denoised = denoise_tomogram_stream(volumes=args.volumes, model=denoiser, output_path=args.output, suffix=args.suffix, gaus=args.gaus, 
+    denoised = denoise_tomogram_stream(volumes=args.volumes, model=denoiser, output_path=args.output, suffix=args.suffix, gaus=args.gaussian, 
                                        patch_size=args.patch_size, padding=args.patch_padding, verbose=True, use_cuda=use_cuda)
     return denoised
 
