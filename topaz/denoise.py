@@ -349,7 +349,7 @@ class Denoise3D(Denoise):
                 # stitch into denoised volume
                 len_iter = len(x) if len(x.shape) == 4 else 1
                 for b in range(len_iter):
-                    i,j,k = index[b] if len_iter > 1 else index
+                    i,j,k = index[b]
                     xb = x[b] if len_iter > 1 else x
 
                     patch = denoised[i:i+patch_size,j:j+patch_size,k:k+patch_size]
