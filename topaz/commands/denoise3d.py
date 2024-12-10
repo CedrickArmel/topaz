@@ -17,7 +17,7 @@ def add_arguments(parser=None):
 
     parser.add_argument('volumes', nargs='*', help='volumes to denoise')
     parser.add_argument('-o', '--output', help='directory to save denoised volumes')
-    parser.add_argument('--suffix', help='optional suffix to append to file paths. if not output is specfied, denoised volumes are written to the same location as the input with the suffix appended to the name (default .denoised)')
+    parser.add_argument('--suffix', default='.denoised', help='optional suffix to append to file paths. if not output is specfied, denoised volumes are written to the same location as the input with the suffix appended to the name (default .denoised)')
 
     parser.add_argument('-m', '--model', default='unet-3d', help='use pretrained denoising model. accepts path to a previously saved model or one of the provided pretrained models. pretrained model options are: unet-3d, unet-3d-10a, unet-3d-20a (default: unet-3d)')
 

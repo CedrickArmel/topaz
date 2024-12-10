@@ -503,10 +503,10 @@ def denoise_tomogram(path:str, model:Denoise3D, outdir:str=None, suffix:str='', 
         if suffix == '': # use default
             suffix = '.denoised'
         no_ext,ext = os.path.splitext(path)
-        outpath = os.path.join(no_ext, suffix, ext)
+        outpath = os.path.join("./", no_ext + suffix + ext)
     else:
         no_ext,ext = os.path.splitext(name)
-        outpath = os.path.join(outdir, no_ext, suffix, ext)
+        outpath = os.path.join(outdir, no_ext + suffix + ext)
 
     # use the read header except for a few fields
     header = header._replace(mode=2) # 32-bit real
