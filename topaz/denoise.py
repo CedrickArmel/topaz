@@ -280,7 +280,8 @@ class Denoise():
         # normalize, add singleton batch and input channel dims 
         mu, std = input.mean(), input.std()
         input = (input - mu) / std 
-        input = input.unsqueeze(0).unsqueeze(0)
+        input = (input.unsqueeze(-1) if input.dim() == 4  # for tomograms : (1, D, H, W) => (1, D, H, W, 1)
+                 else input.unsqueeze(0).unsqueeze(0))
         # predict, remove extra dims
         pred = self.model(input).squeeze()
         # unnormalize
