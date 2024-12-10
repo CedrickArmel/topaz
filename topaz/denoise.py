@@ -347,9 +347,10 @@ class Denoise3D(Denoise):
                 x = super().denoise( (x - mu)/std ) * std + mu
 
                 # stitch into denoised volume
-                for b in range(len(x)):
-                    i,j,k = index[b]
-                    xb = x[b]
+                len_iter = len(x) if len(x.shape) == 4 else 1
+                for b in range(len_iter):
+                    i,j,k = index[b] if len_iter > 1 else index
+                    xb = x[b] if len_iter > 1 else x
 
                     patch = denoised[i:i+patch_size,j:j+patch_size,k:k+patch_size]
                     pz,py,px = patch.shape
